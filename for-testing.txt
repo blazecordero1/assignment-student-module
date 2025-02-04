@@ -1,0 +1,4 @@
+sudo systemctl start mysql   
+brew services start mysql
+
+nest start

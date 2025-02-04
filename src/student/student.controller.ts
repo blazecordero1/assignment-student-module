@@ -1,7 +1,12 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { StudentService } from './student.service';
 import { Student } from './student.entity';
+/*
+Form bug pag mag ddelete ng id
+fetch request d nagf ffetch
 
+
+*/
 @Controller('students')
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
@@ -10,21 +15,22 @@ export class StudentController {
   async create(@Body() studentData: Partial<Student>): Promise<Student> {
     return this.studentService.create(studentData);
   }
+
   @Get()
   async findAll(): Promise<Student[]> {
     return this.studentService.findAll();
   }
-  
+
   @Get(':id')
-  async findOne(@Param('id') id: number): Promise<Student> {
+  async findOne(@Param('id') id: number): Promise<Student | null> {
     return this.studentService.findOne(id);
   }
-
+  
   @Put(':id')
-  async update(@Param('id') id: number, @Body() studentData: Partial<Student>): Promise<Student> {
+  async update(@Param('id') id: number, @Body() studentData: Partial<Student>): Promise<Student | null> {
     return this.studentService.update(id, studentData);
   }
-
+  
   @Delete(':id')
   async remove(@Param('id') id: number): Promise<void> {
     return this.studentService.remove(id);
