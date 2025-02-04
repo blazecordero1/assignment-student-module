@@ -10,4 +10,13 @@ export class StudentController {
   async create(@Body() studentData: Partial<Student>): Promise<Student> {
     return this.studentService.create(studentData);
   }
+  @Get()
+  async findAll(): Promise<Student[]> {
+    return this.studentService.findAll();
+  }
+  
+  @Get(':id')
+  async findOne(@Param('id') id: number): Promise<Student> {
+    return this.studentService.findOne(id);
+  }
 }
