@@ -10,7 +10,7 @@ import { StudentModule } from './student/student.module';
       host: 'localhost',
       port: 3306,
       username: 'root', 
-      password: 'password', 
+      password: 'fk9lratv', 
       database: 'student_db',
       entities: [Student],
       synchronize: true,

@@ -2,3 +2,82 @@ sudo systemctl start mysql
 brew services start mysql
 
 nest start
+
+
+
+
+//setup password
+sudo mysqld_safe --skip-grant-tables &
+
+mysql -u root
+
+
+UPDATE mysql.user SET authentication_string = PASSWORD('fk9lratv') WHERE User = 'root';
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'fk9lratv';
+
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE student_db;
+SHOW DATABASES;
+
+
+EXIT;
+
+
+
+
+// for testing //
+
+Endpoints
+
+
+Create Student: POST /students
+
+Get All Students: GET /students
+
+Get Student by ID: GET /students/:id
+
+Update Student: PUT /students/:id
+
+Delete Student: DELETE /students/:id
+
+
+
+
+
+create Requests
+
+
+
+curl -X POST http://localhost:3000/students \
+     -H "Content-Type: application/json" \
+     -d '{"firstName": "Blaze", "lastName": "Condero", "email": "Sample@example.com", "enrollmentDate": "2025-02-04"}'
+
+
+
+
+
+
+
+
+Sample Requests
+Create Student:
+
+
+{
+  "firstName": "Username-ng-user",
+  "lastName": "Surname-ng-user",
+  "email": "samp@example.com",
+  "enrollmentDate": "2023-10-01"
+}
+
+
+
+
+
+{
+  "firstName": "Username-ng-user",
+  "lastName": "Surname-ng-user"
+}
